@@ -1,0 +1,601 @@
+/* RESET / GLOBAL STYLES */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+  padding-bottom: 0.1px; /* Prevent footer overlap */
+  padding-top: 0.1px; /* Prevent header overlap */
+}
+
+/* Header Styles */
+header {
+  position: sticky; /* Sticks the header to the top */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays above other elements */
+  background: #f5f5f5; /* Default background color */
+  color: #333; /* Default text color */
+  box-shadow: none; /* No shadow initially */
+  transition: all 0.3s ease; /* Smooth transitions for style changes */
+  padding: 1rem 2rem; /* Padding for a balanced layout */
+}
+
+header.scrolled {
+  background: #2f4f4f; /* Darker background when scrolled */
+  color: #fff; /* White text for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for emphasis */
+}
+
+/* Logo Styles */
+.logo h1 {
+  font-size: 1.8rem; /* Slightly larger font size for modern aesthetics */
+  font-weight: bold;
+  color: inherit; /* Adapts to the header text color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+/* Navigation Styles */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Increase gap for modern spacing */
+
+}
+
+.nav-links {
+  list-style: none;
+  display: flex; /* Horizontally display links */
+  gap: 1.5rem; /* Increase gap for modern spacing */
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: inherit; /* Inherit the header text color */
+  font-weight: 600; /* Semi-bold for emphasis */
+  font-size: 1rem;
+  padding: 0.5rem 1rem; /* Add padding for better click area */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth hover effects */
+  border-radius: 8px; /* Rounded corners for modern design */
+}
+
+.nav-links li a:hover {
+  color: #2f4f4f; /* Change text color on hover */
+  background-color: #fff; /* Add subtle background contrast */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+/* Mobile Nav Toggle */
+.nav-toggle {
+  display: none; /* Hidden by default for larger screens */
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1100; /* Higher z-index to stay above the menu */
+  position: fixed; /* Fix it to the viewport */
+  top: 1rem; /* Adjust to align with your design */
+  right: 1rem; /* Adjust to align with your design */
+}
+
+.nav-toggle .bar {
+  height: 3px;
+  width: 25px;
+  background-color: #333;
+  margin: 4px 0;
+  transition: all 0.3s ease-in-out; /* Smooth animation */
+}
+
+/* Animate hamburger menu to 'X' when toggled */
+.nav-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex; /* Display inline links by default for desktop */
+  list-style: none;
+  gap: 1rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  color: #2f4f4f; /* Add hover effect */
+}
+
+.carousel-btn {
+  position: absolute; /* Absolute positioning for placement */
+  top: 50%; /* Vertically center the buttons */
+  transform: translateY(-50%); /* Adjust for centering */
+  background: linear-gradient(135deg, #2f4f4f, #4f6f6f); /* Gradient background */
+  border: none;
+  padding: 1rem 2.5rem; /* Adjust size as needed */
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff; /* White text for contrast */
+  border-radius: 50px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  z-index: 10; /* Ensure buttons stay above other elements */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover/active effects */
+}
+
+.carousel-btn.prev {
+  left: 30px; /* Adjust distance from the left side */
+}
+
+.carousel-btn.next {
+  right: 30px; /* Adjust distance from the right side */
+}
+
+
+.carousel-btn:hover {
+  transform: scale(1.1); /* Slight scale-up on hover */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+  background-color: #ddd; /* Subtle background change for feedback */
+}
+
+.carousel-btn:active {
+  transform: scale(1); /* Reset scale on click */
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* Softer shadow */
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0 auto; /* Center the hero section if needed */
+  padding: 0 auto; /* Add padding if needed */ 
+  background: #fff; /* Ensure it matches the background */
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Match parent height */
+  overflow: hidden; /* Ensure no overflow */
+}
+
+.carousel-slide {
+  display: flex; /* Ensure slides are aligned horizontally */
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto; /* Stretch to fill container */
+  object-fit: cover; /* Maintain image aspect ratio */
+  display: block; /* Ensure images are block elements */
+}
+
+
+/* Tagline Over the Carousel */
+.hero-tagline {
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
+  width: 100%;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.hero-tagline h2 {
+  font-size: 1.8rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: fixed; /* Fix the menu to the viewport */
+    top: 0;
+    right: 0;
+    background: rgba(245, 245, 245, 0.95); /* Semi-transparent background */
+    width: 70%; /* Menu covers 70% of the screen width */
+    height: 100vh; /* Full height of the viewport */
+    transform: translateX(100%); /* Hidden off-screen by default */
+    transition: transform 0.3s ease-in-out; /* Smooth slide-in effect */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 2rem 1rem; /* Add padding for spacing */
+    z-index: 1000; /* Ensure menu stays above other elements */
+  }
+
+  .nav-links.show {
+    transform: translateX(0); /* Slide-in when toggled */
+  }
+
+  .nav-links li {
+    text-align: left; /* Align links to the left */
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.2rem; /* Larger text for better readability */
+    transition: color 0.2s ease-in-out;
+  }
+
+  .nav-links li a:hover {
+    color: #2f4f4f; /* Add a hover effect */
+  }
+
+  .nav-toggle {
+    display: flex; /* Show toggle button only on mobile */
+  }
+
+  .hero {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Prevent scrolling caused by extra space */
+  }
+
+  .carousel-container {
+    height: 100%; /* Fill the hero section height */
+    width: 100%; /* Ensure the width matches the screen */
+    overflow: hidden;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%; /* Stretch image height to fill container */
+    object-fit: cover; /* Ensure image covers the container entirely */
+  }
+
+  .hero-tagline h2 {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .carousel-btn {
+    padding: 0.3rem 0.6rem;
+    font-size: 1rem;
+  }
+
+  .features {
+    padding: 2rem 1rem; /* Reduce padding for smaller screens */
+  }
+
+  .features h2 {
+    font-size: 1.8rem; /* Slightly smaller heading */
+    margin-bottom: 1.5rem; /* Adjust spacing */
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr; /* Single-column layout */
+    gap: 1.5rem; /* Smaller gap between cards */
+  }
+
+  .feature-card img {
+    height: 150px; /* Adjust image height for smaller screens */
+  }
+
+  .feature-card h3 {
+    font-size: 1.3rem; /* Adjust heading size */
+  }
+
+  .feature-card p {
+    font-size: 0.95rem; /* Slightly smaller text for readability */
+    padding: 0 1rem 1rem; /* Reduce padding */
+  }
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f5f5f5;
+  margin-top: 2rem;
+}
+
+/* CONTACT PAGE */
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+}
+
+.contact-form {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.submit-btn {
+  width: 100px;
+  padding: 0.6rem 0;
+  background-color: #2f4f4f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background-color: #4f6f6f;
+}
+
+.contact-info {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-info ul {
+  list-style: disc;
+  margin-left: 1.2rem;
+}
+
+.contact-info ul li a {
+  color: #2f4f4f;
+  text-decoration: none;
+}
+
+.contact-info ul li a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE IMAGES */
+.responsive-image-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.responsive-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.features {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: #f9f9f9;
+}
+
+.features h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2f4f4f;
+}
+
+.features-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.feature-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.feature-card h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: #2f4f4f;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  padding: 0 1rem 1.5rem;
+  color: #666;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.features {
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+.featured-products {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: #fff;
+}
+
+.featured-products h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2f4f4f;
+}
+
+.product-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.product-card {
+  background: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.product-card p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.product-card .btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #2f4f4f;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.product-card .btn:hover {
+  background-color: #4f6f6f;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.testimonials {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: #f5f5f5;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2f4f4f;
+}
+
+.testimonial-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonial-slide-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-slide {
+  flex: 0 0 100%; /* Each slide takes full width */
+  text-align: center;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-slide p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.testimonial-slide h3 {
+  font-size: 1rem;
+  color: #2f4f4f;
+}
+
+section {
+  margin: 2rem 0; /* Uniform spacing above and below sections */
+  padding: 2rem 1rem;
+}
+
+.features,
+.featured-products,
+.testimonials {
+  text-align: center;
+}
+
+.features h2,
+.featured-products h2,
+.testimonials h2 {
+  margin-bottom: 1.5rem; /* Spacing below headings */
+}
