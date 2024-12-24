@@ -168,3 +168,14 @@ window.addEventListener('scroll', () => {
     header.classList.remove('scrolled'); // Remove the class when back to the top
   }
 });
+
+
+// Function to update the slide index
+function saveCurrentSlideIndex(index) {
+  localStorage.setItem('carouselIndex', index); // Save the index to localStorage
+}
+
+// Get the saved slide index
+function getSavedSlideIndex() {
+  return parseInt(localStorage.getItem('carouselIndex')) || 0; // Default to 0 if no value is saved
+}
